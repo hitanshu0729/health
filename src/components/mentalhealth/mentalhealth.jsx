@@ -14,8 +14,9 @@ const AssessmentSection = ({ title, questions, onScoreChange }) => {
   };
 
   return (
-    <div className="my-4">
-      <h2 className="text-lg font-semibold">{title} Assessment</h2>
+    <div className="my-4 text-white mx-auto text-center">
+    <h2 className="text-lg font-bold text-success" style={{ fontWeight: 600, fontSize: '2.2rem' }}>{title} Assessment</h2>
+
       {questions.map((question, index) => (
         <div key={index} className="my-3">
           <p>{question}</p>
@@ -24,7 +25,7 @@ const AssessmentSection = ({ title, questions, onScoreChange }) => {
             onChange={(e) =>
               handleResponseChange(index, parseInt(e.target.value, 10))
             }
-            className="p-2 border border-gray-300 rounded-md"
+            className="p-2 border border-gray-300 rounded-md text-black" style={{ width: '500px'}}
           >
             <option value="0">0 - Not at all</option>
             <option value="1">1 - Several days</option>
@@ -59,10 +60,20 @@ export default function MentalHealthAssessment() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-7xl p-4">
-      <h1 className="text-center text-2xl sm:text-5xl py-5 font-medium">
+    <div className="mx-auto w-full max-w-7xl p-4 bg-black text-white">
+      <h1 className="text-center text-2xl sm:text-5xl py-5 font-medium text-success">
         Mental Health Assessment
       </h1>
+      <div className="mt-4" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+  {true && (
+      <div className="text-danger">
+        <p>Depression Score: {depressionScore}</p>
+        <p>Anxiety Score: {anxietyScore}</p>
+        <p>ADHD Score: {adhdScore}</p>
+        {/* You can add logic here to interpret the combined scores if needed */}
+      </div>
+  )}
+</div>
 
       <AssessmentSection
         title="Depression"
@@ -106,18 +117,7 @@ export default function MentalHealthAssessment() {
         onScoreChange={handleScoreChange}
       />
 
-      <div className="mt-4">
-        {depressionScore !== null &&
-          anxietyScore !== null &&
-          adhdScore !== null && (
-            <div>
-              <p>Depression Score: {depressionScore}</p>
-              <p>Anxiety Score: {anxietyScore}</p>
-              <p>ADHD Score: {adhdScore}</p>
-              {/* You can add logic here to interpret the combined scores if needed */}
-            </div>
-          )}
-      </div>
+  
     </div>
   );
 }

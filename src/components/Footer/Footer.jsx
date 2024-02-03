@@ -9,8 +9,8 @@ export default function Footer() {
           <div class="mb-6 md:mb-0">
             <a href="/" class="flex items-center">
               <img
-                src="https://alexharkness.com/wp-content/uploads/2020/06/logo-2.png"
-                class="h-8 mr-3"
+                src="src/components/Header/logo.jpeg"
+                class="h-12 mr-5"
                 alt="FlowBite Logo"
               />
               <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
